@@ -1,36 +1,19 @@
-var connection = require('../config/connections.js');
 var orm = require('../config/orm.js');
 
-connection.connect(function (err) {
-    if (err) {
-        return console.error('error connecting: ' + err.stack);
+module.exports = {
+    all: function(callback) {
+        orm.selectAll('burgers', 'id', 'ASC', function(data) {
+            callback(data);
+        });
+    },
+    post: function(columns, values, callback) {
+        orm.insertOne('burgers', columns, values, function (data) {
+            callback(data);
+        });
+    },
+    update: function(properties, selector, callback) {
+        orm.updateOne('burgers', properties, selector, function(data) {
+            callback(data);
+        });
     }
-
-    console.log('connected as id %s', connection.threadId);
-});
-
-var router = 'fdsf';
-
-// Root get route
-app.get("/", function(req, res) {
-
-    connection.query("SELECT * FROM events;", function(err, data) {
-        if (err) throw err;
-
-        res.render("index", { events: data });
-    });
-});
-
-// Post route -> back to home
-app.post("/create", function(req, res) {
-
-    connection.query("INSERT INTO events (event) VALUES (?)", [req.body.event], function(err, result) {
-        if (err) throw err;
-
-        res.redirect("/");
-    });
-
-});
-
-
-module.exports = router;
+};
