@@ -15,25 +15,19 @@ router.get('/', function(req, res) {
 
 
 router.post('/', function(req, res) {
-    burger.post([
-        'name', 'sleepy'
-    ], [
-        req.body.name, req.body.sleepy
-    ], function() {
+    burger.post('(burger_name, devoured)', '\'' + req.body.name + '\', false', function() {
         res.redirect('/');
     });
 });
 
 router.put('/:id', function(req, res) {
+    var update = 'devoured = ' + req.body.devoured;
     var condition = 'id = ' + req.params.id;
 
-    console.log('condition', condition);
-
-    burger.update({
-        sleepy: req.body.sleepy
-    }, condition, function() {
-        res.redirect('/');
-    });
+    burger.update(
+        update, condition, function() {
+            res.redirect('/');
+        });
 });
 
 // Export routes for server.js to use.

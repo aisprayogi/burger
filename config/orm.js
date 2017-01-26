@@ -12,9 +12,9 @@ module.exports = {
             }
         });
     },
-    insertOne: function(table, properties, callback) {
-        var queryString = 'INSERT INTO ?? (??) VALUES (??);';
-        connection.query(queryString, [table, properties.keys(), properties.values()], function(err, data) {
+    insertOne: function(table, columns, values, callback) {
+        var queryString = 'INSERT INTO ' + table + columns + ' VALUES (' + values + ')';
+        connection.query(queryString, function(err, data) {
             if (err) {
                 return console.log(err);
             } else {
@@ -23,8 +23,10 @@ module.exports = {
         });
     },
     updateOne: function(table, properties, selector, callback) {
-        var queryString = 'UPDATE ?? SET ?? WHERE ?? ;';
-        connection.query(queryString, [table, properties, selector], function(err, data) {
+        var queryString = 'UPDATE ' + table + ' SET ' + properties + ' WHERE ' + selector;
+
+
+        connection.query(queryString, function(err, data) {
             if (err) {
                 return console.log(err);
             } else {
