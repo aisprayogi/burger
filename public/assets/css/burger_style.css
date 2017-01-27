@@ -29,7 +29,7 @@ ul {
     max-width: 100%;
     width: 400px;
     height: auto;
-    border: hidden;
+    border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 5px;
     background-color: rgba(255, 255, 255, .4);
     display: flex;
