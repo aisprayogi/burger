@@ -2,14 +2,14 @@
 var orm = require('../config/orm.js');
 
 module.exports = {
+    // Makes a request for data to ORM function, returns data to controller.
     all: function(callback) {
-        // Makes a request for data to ORM function, returns data to controller.
         orm.selectAll('burgers', 'id', 'DESC', function(data) {
             callback(data);
         });
     },
+    // Creates query snippets from input from controller.
     post: function(input, callback) {
-        // Creates query snippets from input from controller.
         var columns = '(burger_name, devoured)';
         var values = '\'' + input + '\', false';
 
@@ -18,8 +18,8 @@ module.exports = {
             callback(data);
         });
     },
+    // Creates query snippets from property and selector from controller.
     update: function(property, selector, callback) {
-        // Creates query snippets from property and selector from controller.
         var update = 'devoured = ' + property;
         var condition = 'id = ' + selector;
 
