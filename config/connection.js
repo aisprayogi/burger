@@ -1,5 +1,7 @@
-// Set up mysql connection.
+// NPM dependency.
 var mysql = require('mysql');
+
+// Connect to JAWS_DB if on Heroku, or a local MySQL instance if not.
 var connection;
 
 if (process.env.JAWSDB_URL) {
@@ -8,7 +10,7 @@ if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: '5555',
+        password: '',
         database: 'burgers_db'
     });
 }

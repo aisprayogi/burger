@@ -2,6 +2,8 @@
 node_modules
 
 # WebStorm project files
-
-MySQLHerokuDeploymentProcess.pdf
 .idea
+
+# Instruction files
+MySQLHerokuDeploymentProcess.pdf
+instructions.md

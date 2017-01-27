@@ -1,5 +1,7 @@
+// Import NPM dependency and Express router function.
 var express = require('express');
 var router = express.Router();
+
 // Import data model.
 var burger = require('../models/burger.js');
 
