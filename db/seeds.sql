@@ -1,5 +1,5 @@
 -- Select database.
-USE burger_db;
+USE burgers_db;
 
 -- Add seed data.
 INSERT INTO burgers (burger_name) VALUES
